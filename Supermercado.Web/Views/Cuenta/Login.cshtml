@@ -1,0 +1,44 @@
+@model Supermercado.Web.Models.LoginViewModel
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-7 col-lg-5">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="p-4 text-white text-center" style="background: linear-gradient(135deg, #1b5e20, #43a047);">
+                    <h3 class="fw-bold mb-1">Market Express</h3>
+                    <p class="mb-0 small opacity-75">Frescura del campo directo a tu puerta</p>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="All" class="text-danger small mb-3"></div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-success">¿Cómo deseas ingresar?</label>
+                            <select asp-for="RolSeleccionado" class="form-select form-select-lg border-success">
+                                <option value="Cliente">Soy Cliente (Hacer mercado)</option>
+                                <option value="Admin">Soy Empleado / Dueño (Despachar pedidos)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Correo Electrónico</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="ejemplo@correo.com" required />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Contraseña</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="••••••••" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg w-100 fw-bold shadow-sm">Iniciar Sesión</button>
+                    </form>
+
+                    <hr class="my-4" />
+                    <div class="text-center">
+                        <span class="text-muted small">¿Aún no tienes cuenta en Market Express?</span><br />
+                        <a asp-action="Registro" class="btn btn-outline-success btn-sm mt-2 fw-bold">Crear Cuenta Nueva</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

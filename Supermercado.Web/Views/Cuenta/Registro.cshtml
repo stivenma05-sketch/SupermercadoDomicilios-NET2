@@ -1,0 +1,70 @@
+@model Supermercado.Web.Models.RegistroViewModel
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="p-4 text-white text-center" style="background: linear-gradient(135deg, #1b5e20, #43a047);">
+                    <h3 class="fw-bold mb-1">Registro - Market Express</h3>
+                    <p class="mb-0 small opacity-75">Crea tu perfil de Cliente o Empleado / Dueño</p>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Registro" method="post">
+                        <div asp-validation-summary="All" class="text-danger small mb-3"></div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-success">Tipo de Perfil:</label>
+                            <select asp-for="TipoCuenta" id="tipoCuentaSelect" class="form-select border-success" onchange="toggleCodigoEmpleado()">
+                                <option value="Cliente">Cliente (Solicitar domicilios)</option>
+                                <option value="Admin">Empleado / Dueño (Administrar y despachar)</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3" id="divCodigoEmpleado" style="display:none;">
+                            <label class="form-label fw-bold text-warning-emphasis">Código de Autorización Market Express (Use: COSECHA2026)</label>
+                            <input asp-for="CodigoEmpleado" class="form-control border-warning" placeholder="Código interno del supermercado" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Nombre Completo</label>
+                            <input asp-for="NombreCompleto" class="form-control" placeholder="Ej: Andrea Bastidas" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Correo Electrónico</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="correo@ejemplo.com" required />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Número de WhatsApp</label>
+                                <input asp-for="TelefonoWhatsApp" class="form-control" placeholder="Ej: 573001234567" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold">Número de Llamada</label>
+                                <input asp-for="TelefonoLlamada" class="form-control" placeholder="Ej: 3001234567" required />
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Dirección de Entrega</label>
+                            <input asp-for="Direccion" class="form-control" placeholder="Ej: Calle 30 # 25-14, Barrio Centro" required />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Contraseña (mínimo 6 caracteres)</label>
+                            <input asp-for="Password" type="password" class="form-control" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-success btn-lg w-100 fw-bold">Completar Registro</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function toggleCodigoEmpleado() {
+        var tipo = document.getElementById("tipoCuentaSelect").value;
+        document.getElementById("divCodigoEmpleado").style.display = (tipo === "Admin") ? "block" : "none";
+    }
+</script>

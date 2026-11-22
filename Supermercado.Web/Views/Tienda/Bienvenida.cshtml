@@ -1,0 +1,178 @@
+@{
+    ViewData["Title"] = "Bienvenido a Market Express";
+}
+
+<style>
+    .hero-supermercado {
+        position: relative;
+        min-height: calc(100vh - 76px);
+        background: linear-gradient(135deg, rgba(16, 61, 20, 0.88) 0%, rgba(27, 94, 32, 0.82) 50%, rgba(230, 81, 0, 0.82) 100%),
+                    url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&q=85') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 3rem 0;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(14px);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-radius: 28px;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+        animation: entradaSuave 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .logo-flotante {
+        animation: flotarLogo 3.5s ease-in-out infinite;
+        filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.22));
+        transition: transform 0.3s ease;
+    }
+    .logo-flotante:hover {
+        transform: scale(1.06) rotate(-2deg);
+    }
+
+    .titulo-wow {
+        font-size: clamp(2.3rem, 4.5vw, 3.7rem);
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+    }
+
+    .texto-degradado {
+        background: linear-gradient(90deg, #1b5e20, #43a047, #f57c00, #ff9800);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: brilloTexto 4s linear infinite;
+    }
+
+    .btn-continuar-wow {
+        background: linear-gradient(90deg, #2e7d32, #f57c00);
+        background-size: 200% auto;
+        border: none;
+        color: white;
+        font-family: 'Fredoka', sans-serif;
+        font-size: 1.25rem;
+        padding: 14px 36px;
+        border-radius: 50px;
+        box-shadow: 0 10px 25px rgba(245, 124, 0, 0.45);
+        transition: all 0.3s ease;
+    }
+    .btn-continuar-wow:hover {
+        background-position: right center;
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 15px 30px rgba(46, 125, 50, 0.5);
+        color: white;
+    }
+
+    .fruta-decorativa {
+        position: absolute;
+        font-size: 3.5rem;
+        opacity: 0.25;
+        user-select: none;
+        animation: flotarFruta 6s ease-in-out infinite;
+    }
+
+    .badge-beneficio {
+        background: #f1f8e9;
+        border: 1px solid #c5e1a5;
+        color: #1b5e20;
+        border-radius: 14px;
+        padding: 10px 14px;
+        font-weight: 600;
+        transition: transform 0.25s ease;
+    }
+    .badge-beneficio:hover {
+        transform: translateY(-3px);
+        background: #fff3e0;
+        border-color: #ffcc80;
+        color: #e65100;
+    }
+
+    @@keyframes flotarLogo {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-14px); }
+    }
+
+    @@keyframes flotarFruta {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-25px) rotate(12deg); }
+    }
+
+    @@keyframes brilloTexto {
+        to { background-position: 200% center; }
+    }
+
+    @@keyframes entradaSuave {
+        from { opacity: 0; transform: translateY(35px) scale(0.97); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+</style>
+
+<div class="hero-supermercado">
+    <!-- Frutas flotantes de fondo -->
+    <div class="fruta-decorativa" style="top: 8%; left: 5%; animation-delay: 0s;">🍎</div>
+    <div class="fruta-decorativa" style="top: 15%; right: 8%; animation-delay: 1.5s;">🥕</div>
+    <div class="fruta-decorativa" style="bottom: 12%; left: 8%; animation-delay: 2.2s;">🥑</div>
+    <div class="fruta-decorativa" style="bottom: 10%; right: 6%; animation-delay: 0.8s;">🍊</div>
+
+    <div class="container position-relative" style="z-index: 2;">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-11">
+                <div class="glass-card p-4 p-md-5">
+                    <div class="row align-items-center g-4">
+                        <!-- Columna Logo Animado -->
+                        <div class="col-12 col-lg-5 text-center">
+                            <div class="p-4 rounded-4" style="background: radial-gradient(circle, #ffffff 40%, #f1f8e9 100%);">
+                                <img src="~/images/logo.png" alt="Market Express" class="img-fluid logo-flotante rounded-4" style="max-height: 280px;" />
+                            </div>
+                        </div>
+
+                        <!-- Columna Mensaje Impactante -->
+                        <div class="col-12 col-lg-7">
+                            <span class="badge rounded-pill px-3 py-2 mb-3 fs-6 shadow-sm" style="background-color: #fff3e0; color: #e65100; border: 1px solid #ffb74d;">
+                                ★ Tu Supermercado de Confianza a Domicilio
+                            </span>
+
+                            <h1 class="titulo-wow fw-bold text-dark mb-3">
+                                ¡Bienvenido a <br />
+                                <span class="texto-degradado">Market Express!</span>
+                            </h1>
+
+                            <p class="lead text-secondary mb-4" style="font-size: 1.15rem;">
+                                Frescura del campo y tus marcas favoritas en un solo lugar. Explora más de <strong>210 productos</strong>, arma tu carrito en segundos y recíbelo rápido en la puerta de tu hogar.
+                            </p>
+
+                            <div class="row g-2 mb-4 small">
+                                <div class="col-6 col-sm-6">
+                                    <div class="badge-beneficio">🥬 Frutas y verduras frescas</div>
+                                </div>
+                                <div class="col-6 col-sm-6">
+                                    <div class="badge-beneficio">🚚 Domicilios en tiempo récord</div>
+                                </div>
+                                <div class="col-6 col-sm-6">
+                                    <div class="badge-beneficio">💳 Pago contra entrega o digital</div>
+                                </div>
+                                <div class="col-6 col-sm-6">
+                                    <div class="badge-beneficio">💬 Atención directa por WhatsApp</div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap align-items-center gap-3 pt-2">
+                                <a asp-controller="Tienda" asp-action="Index" class="btn btn-continuar-wow">
+                                    Continuar al Mercado &rarr;
+                                </a>
+                                @if (User.Identity?.IsAuthenticated != true)
+                                {
+                                    <a asp-controller="Cuenta" asp-action="Login" class="btn btn-outline-success btn-lg rounded-pill px-4 fw-bold">
+                                        Iniciar Sesión
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

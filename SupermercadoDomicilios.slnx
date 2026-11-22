@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Supermercado.Core/Supermercado.Core.csproj" />
+  <Project Path="Supermercado.Desktop/Supermercado.Desktop.csproj" />
+  <Project Path="Supermercado.Web/Supermercado.Web.csproj" />
+</Solution>
